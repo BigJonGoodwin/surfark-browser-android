@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Surfark Companion",
+  "version": "0.1.0",
+  "description": "Save a page to your notes, save a one-file snapshot of it, or read it in a clean reader view. Part of Surfark Browser.",
+  "browser_specific_settings": {
+    "gecko": { "id": "companion@surfark.browser", "strict_min_version": "128.0" },
+    "gecko_android": { "strict_min_version": "128.0" }
+  },
+  "permissions": ["activeTab", "scripting", "downloads", "storage", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "scripts": ["lib/tree.js", "lib/markdown.js", "lib/names.js", "background.js"]
+  },
+  "action": {
+    "default_title": "Surfark Companion",
+    "default_popup": "popup/popup.html",
+    "default_icon": "icon.svg"
+  },
+  "icons": { "48": "icon.svg", "96": "icon.svg" },
+  "options_ui": { "page": "options/options.html" },
+  "commands": {
+    "note": { "suggested_key": { "default": "Alt+Shift+N" }, "description": "Save to notes" },
+    "snapshot": { "suggested_key": { "default": "Alt+Shift+S" }, "description": "Save snapshot of this page" },
+    "reader": { "suggested_key": { "default": "Alt+Shift+R" }, "description": "Open in Surfark reader" }
+  }
+}

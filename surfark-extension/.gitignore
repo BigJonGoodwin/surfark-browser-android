@@ -1,2 +1,4 @@
 dist/
 node_modules/
+# The repository root ignores every manifest.json (Fenix build output). Ours is source.
+!src/manifest.json
