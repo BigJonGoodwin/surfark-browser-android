@@ -1,0 +1,31 @@
+/* Surfark reader view. One readable column at any width, from the Fold's cover screen to a
+   desktop window. Follows the system's light or dark setting. */
+:root { color-scheme: light dark; --ink: #1c2529; --paper: #f7f5ef; --soft: #5d6a70; --line: #d8d3c4; --accent: #1f4e5f; --size: 19px; }
+@media (prefers-color-scheme: dark) { :root { --ink: #e4e1d6; --paper: #171d20; --soft: #9aa7ad; --line: #333e44; --accent: #8cc4d6; } }
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body { margin: 0; color: var(--ink); font: var(--size)/1.65 Georgia, "Iowan Old Style", "Noto Serif", serif; }
+header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 8px max(16px, env(safe-area-inset-left)); background: var(--paper); border-bottom: 1px solid var(--line);
+  font: 14px/1.2 system-ui, sans-serif; }
+header a { color: var(--accent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tools { display: flex; gap: 6px; flex: none; }
+.tools button { min-width: 44px; min-height: 36px; font: inherit; color: var(--ink); background: transparent;
+  border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+main { max-width: 36em; margin: 0 auto; padding: 24px 20px 96px; overflow-wrap: break-word; }
+h1 { font-size: 1.7em; line-height: 1.2; margin: 0 0 .3em; text-wrap: balance; }
+#origin { margin: 0 0 2em; color: var(--soft); font: 14px/1.4 system-ui, sans-serif; overflow-wrap: anywhere; }
+article h1, article h2, article h3, article h4 { line-height: 1.25; margin: 1.6em 0 .5em; }
+article h1, article h2 { font-size: 1.3em; }
+article h3, article h4, article h5, article h6 { font-size: 1.1em; }
+article a { color: var(--accent); }
+article img { max-width: 100%; height: auto; border-radius: 4px; }
+article figure { margin: 1.5em 0; }
+article figcaption { color: var(--soft); font-size: .8em; }
+article blockquote { margin: 1.2em 0; padding-left: 1em; border-left: 3px solid var(--line); color: var(--soft); }
+article pre { overflow-x: auto; padding: 12px; border: 1px solid var(--line); border-radius: 6px; font: .8em/1.5 ui-monospace, Consolas, monospace; }
+article code, article kbd { font: .85em ui-monospace, Consolas, monospace; }
+article table { display: block; overflow-x: auto; border-collapse: collapse; font-size: .85em; }
+article td, article th { border: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
+article hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+#problem { color: var(--soft); }

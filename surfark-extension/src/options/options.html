@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surfark Companion settings</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 15px/1.5 system-ui, sans-serif; margin: 16px; max-width: 34em; }
+    label { display: block; margin: 14px 0 4px; font-weight: 600; }
+    input { width: 100%; min-height: 40px; padding: 6px 10px; font: inherit; box-sizing: border-box; }
+    small { display: block; opacity: .75; }
+    #saved { min-height: 1.5em; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <p>Files are saved inside the browser's Downloads folder.</p>
+  <label for="notesFolder">Folder for notes</label>
+  <input id="notesFolder" autocomplete="off" spellcheck="false">
+  <small>Markdown files. Point Obsidian (or a sync tool) at this folder to get them into a vault.</small>
+  <label for="snapshotsFolder">Folder for snapshots</label>
+  <input id="snapshotsFolder" autocomplete="off" spellcheck="false">
+  <small>One HTML file per saved page.</small>
+  <p id="saved" role="status" aria-live="polite"></p>
+  <script src="../lib/names.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

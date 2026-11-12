@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reader</title>
+  <link rel="stylesheet" href="reader.css">
+</head>
+<body>
+  <header>
+    <a id="source" rel="noreferrer">Back to the page</a>
+    <span class="tools">
+      <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+      <button type="button" id="larger" aria-label="Larger text">A+</button>
+    </span>
+  </header>
+  <main>
+    <h1 id="title"></h1>
+    <p id="origin"></p>
+    <article id="content"></article>
+    <p id="problem" hidden></p>
+  </main>
+  <script src="../lib/tree.js"></script>
+  <script src="reader.js"></script>
+</body>
+</html>

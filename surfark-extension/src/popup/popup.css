@@ -1,0 +1,16 @@
+/* Surfark Companion popup. Sized for a desktop popup and for a phone-width page (Firefox for
+   Android shows popups full width). Follows the system's light or dark setting. */
+:root { color-scheme: light dark; --ink: #1c2529; --paper: #f7f5ef; --line: #d8d3c4; --accent: #1f4e5f; }
+@media (prefers-color-scheme: dark) { :root { --ink: #e9e6dc; --paper: #1b2327; --line: #3a464c; --accent: #8cc4d6; } }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; font: 15px/1.4 system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+main { display: grid; gap: 8px; padding: 12px; }
+button { display: grid; gap: 2px; width: 100%; min-height: 48px; padding: 10px 12px; text-align: left; font: inherit;
+  font-weight: 600; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+button small { font-weight: 400; opacity: .75; }
+button:hover, button:focus-visible { border-color: var(--accent); outline: none; }
+button:disabled { opacity: .5; cursor: progress; }
+#status { margin: 4px 2px 0; min-height: 1.4em; overflow-wrap: anywhere; }
+#status.error { color: #c0392b; }
+@media (prefers-color-scheme: dark) { #status.error { color: #ff9a8b; } }
+#options { justify-self: end; color: var(--accent); font-size: 13px; }

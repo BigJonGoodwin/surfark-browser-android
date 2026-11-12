@@ -23,6 +23,16 @@ Context for whoever reads this next (person or AI):
 
 ## Change log
 
+### 2026-11-12: Surfark Companion 0.1.0, the shared extension (branch `surfark/companion-extension`)
+
+New folder `surfark-extension/`: the WebExtension both browsers will share. Version 0.1.0 saves a
+page to markdown notes, saves a one-file snapshot, and has its own reader view. See
+`surfark-extension/README.md` for what it does, how it is built and its limits. CI for it is
+`.github/workflows/surfark-extension.yml`.
+
+It is not bundled into the app yet and touches no upstream file. Its logic is unit-tested (32
+tests); it has not been run in a real browser yet.
+
 ### 2026-11-12: release pipeline and upstream-merge routine (branch `surfark/release-pipeline`)
 
 - `.github/workflows/sideraven-release.yml` now publishes Surfark Browser: files are named

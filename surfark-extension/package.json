@@ -1,0 +1,12 @@
+{
+  "name": "surfark-companion",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Surfark Companion: the WebExtension shared by Surfark Browser on Android and Windows",
+  "license": "MPL-2.0",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "lint": "npx --yes web-ext@8 lint --source-dir src",
+    "build": "npx --yes web-ext@8 build --source-dir src --artifacts-dir dist --overwrite-dest"
+  }
+}
