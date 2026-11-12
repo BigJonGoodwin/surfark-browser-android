@@ -1,5 +1,9 @@
 name: Sideraven release
 
+# SURFARK-HOOK: in this fork the workflow publishes Surfark Browser. Our tags are our own versions
+# (v0.1.0 ...), never Sideraven's: do not push upstream's tags here, each one would publish a release.
+# The secret names keep Sideraven's prefix so this file stays close to upstream; the key behind them
+# is Surfark's own (docs/surfark/signing.md).
 # A version tag (v1.0.0) builds the release, signs it with Sideraven's key and publishes it on
 # GitHub Releases. The APK names stay the same every release, so Obtainium can track them.
 on:
@@ -29,7 +33,7 @@ jobs:
         run: |
           for name in KEYSTORE ALIAS STORE_PASSWORD KEY_PASSWORD; do
             if [ -z "${!name}" ]; then
-              echo "::error::Signing secret $name is missing. Run the signing-key wizard; nothing is published unsigned."
+              echo "::error::Signing secret $name is missing. See docs/surfark/signing.md; nothing is published unsigned." # SURFARK-HOOK
               exit 1
             fi
           done
@@ -46,6 +50,8 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           echo "FENIX_VERSION=$(tr -d '\n' < version.txt)" >> "$GITHUB_ENV"
+          # SURFARK-HOOK: the Sideraven version this release is built on, for the release notes
+          echo "SIDERAVEN_BASE=$(tr -d '\n' < automation/surfark/sideraven-base.txt)" >> "$GITHUB_ENV"
 
       - name: Setup Java
         uses: actions/setup-java@v5
@@ -99,7 +105,7 @@ jobs:
           mkdir -p dist
           for apk in gradle/build/app/outputs/apk/forkRelease/app-*-forkRelease-unsigned.apk; do
             abi=$(basename "$apk" | sed -E 's/^app-(.*)-forkRelease-unsigned\.apk$/\1/')
-            out="dist/sideraven-$VERSION-$abi.apk"
+            out="dist/surfark-browser-$VERSION-$abi.apk" # SURFARK-HOOK
             "$apksigner" sign --ks "$RUNNER_TEMP/sideraven.jks" --ks-key-alias "$ALIAS" \
               --ks-pass env:STORE_PASSWORD --key-pass env:KEY_PASSWORD --out "$out" "$apk"
             "$apksigner" verify "$out"
@@ -112,15 +118,18 @@ jobs:
       - name: Publish the release
         env:
           GH_TOKEN: ${{ github.token }}
+          # SURFARK-HOOK: in a fork, gh can pick the parent repository; publish in this one
+          GH_REPO: ${{ github.repository }}
         run: |
           # The version's changelog (docs/changelog/<version>.md), when there is one, goes between the two lines.
+          # SURFARK-HOOK: Surfark's wording, and its changelogs live in docs/surfark/changelog/<version>.md
           {
-            echo "Sideraven $VERSION, based on Firefox for Android $FENIX_VERSION."
+            echo "Surfark Browser $VERSION, based on Sideraven $SIDERAVEN_BASE and Firefox for Android $FENIX_VERSION."
             echo
-            if [ -f "docs/changelog/$VERSION.md" ]; then
-              cat "docs/changelog/$VERSION.md"
+            if [ -f "docs/surfark/changelog/$VERSION.md" ]; then
+              cat "docs/surfark/changelog/$VERSION.md"
               echo
             fi
-            echo "Download \`sideraven-$VERSION-arm64-v8a.apk\` for most devices, or \`armeabi-v7a\` for older 32-bit ones."
+            echo "Download \`surfark-browser-$VERSION-arm64-v8a.apk\` for most devices, or \`armeabi-v7a\` for older 32-bit ones."
           } > notes.md
-          gh release create "$GITHUB_REF_NAME" dist/*.apk dist/SHA256SUMS --title "Sideraven $VERSION" --notes-file notes.md
+          gh release create "$GITHUB_REF_NAME" dist/*.apk dist/SHA256SUMS --title "Surfark Browser $VERSION" --notes-file notes.md

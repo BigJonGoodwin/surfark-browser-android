@@ -11,7 +11,7 @@ import androidx.test.uiautomator.Direction
 import androidx.test.uiautomator.Until
 
 /** The release-style Sideraven build (`forkRelease`), the app these journeys drive. */
-const val SIDERAVEN_PACKAGE = "app.sideraven.browser"
+const val SIDERAVEN_PACKAGE = "app.surfark.browser" // SURFARK-HOOK: Surfark Browser's app ID
 
 private const val WAIT_MS = 5_000L
 

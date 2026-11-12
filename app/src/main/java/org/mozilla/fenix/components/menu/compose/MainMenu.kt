@@ -321,6 +321,9 @@ fun MainMenu(
         // SIDERAVEN-HOOK: Sideraven's Optional Controls placed In the menu.
         pt.dweep.sideraven.ui.SideravenMenuGroup(onChosen = onSideravenEntryChosen)
 
+        // SURFARK-HOOK: Surfark Browser's own Main Menu entries (Zen mode).
+        app.surfark.browser.ui.SurfarkMenuGroup(onChosen = onSideravenEntryChosen)
+
         MenuGroup {
             MozillaAccountMenuItem(
                 account = account,

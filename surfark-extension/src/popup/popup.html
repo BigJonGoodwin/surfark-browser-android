@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surfark Companion</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <button type="button" data-action="note">Save to notes<small>The article, or the text you selected, as markdown</small></button>
+    <button type="button" data-action="snapshot">Save snapshot<small>The page as it looks now, in one file</small></button>
+    <button type="button" data-action="reader">Reader view<small>Just the text, on any page</small></button>
+    <p id="status" role="status" aria-live="polite"></p>
+    <a href="#" id="options">Settings</a>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

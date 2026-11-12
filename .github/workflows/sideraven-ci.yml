@@ -51,6 +51,10 @@ jobs:
       - name: Release strings say Sideraven
         run: ./automation/sideraven/test-brand-strings.sh
 
+      # SURFARK-HOOK: Surfark Browser's branding step, which runs after Sideraven's
+      - name: Release strings say Surfark
+        run: ./automation/surfark/test-brand-strings.sh
+
       - name: Install Android SDK with pieces Gradle skips
         run: ./automation/iceraven/install-sdk.sh
 
@@ -69,6 +73,13 @@ jobs:
         env:
           GRADLE_OPTS: -Dorg.gradle.jvmargs="-XX:MaxMetaspaceSize=1g -Xms1g -Xmx5g" -Dorg.gradle.workers.max=2
         run: ./gradlew -PtestBuildType=forkDebug -PsideravenTests -Pkotlin.compiler.execution.strategy=in-process app:testForkDebugUnitTest --tests 'pt.dweep.sideraven.*' --no-daemon
+
+      # SURFARK-HOOK: Surfark's own unit tests (app/src/testSideraven/java/app/surfark). A separate
+      # step so Sideraven's line above stays as upstream wrote it.
+      - name: Surfark unit tests
+        env:
+          GRADLE_OPTS: -Dorg.gradle.jvmargs="-XX:MaxMetaspaceSize=1g -Xms1g -Xmx5g" -Dorg.gradle.workers.max=2
+        run: ./gradlew -PtestBuildType=forkDebug -PsideravenTests -Pkotlin.compiler.execution.strategy=in-process app:testForkDebugUnitTest --tests 'app.surfark.*' --no-daemon
 
       # Private repos: 2 CPU / 8 GB runners, ~2,000 min and 500 MB storage per month.
       - name: Upload arm64 debug APK
