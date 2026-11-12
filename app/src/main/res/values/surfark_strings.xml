@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!-- Surfark Browser's own strings. Kept out of Fenix's strings.xml and Sideraven's
+     sideraven_strings.xml so upstream updates never conflict with them. English only for now. -->
+<resources>
+    <!-- Main Menu entry: hide the Sidebar and Android's bars so the page fills the screen. -->
+    <string name="surfark_zen_mode_enter">Zen mode</string>
+    <!-- Main Menu entry while Zen mode is on: bring the Sidebar and Android's bars back as they were. -->
+    <string name="surfark_zen_mode_leave">Leave Zen mode</string>
+</resources>

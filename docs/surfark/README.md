@@ -23,6 +23,28 @@ Context for whoever reads this next (person or AI):
 
 ## Change log
 
+### 2026-11-12: Zen mode, the first feature in the app itself (branch `surfark/zen-mode`)
+
+A new entry in the Main Menu, "Zen mode", gives the page the whole screen with one tap: the
+Sidebar goes to Auto-Hide and Android's status and navigation bars are hidden. The entry then
+reads "Leave Zen mode" and puts back exactly the layout from before.
+
+How: Sideraven already has both settings (Sidebar Mode, Full screen). `ZenMode` sets the two
+together and remembers the previous values in Surfark's own preference file (`surfark_browser`),
+so it needs no hook of its own in the Sidebar or the window code.
+
+- `app/src/main/java/app/surfark/browser/` is new: Surfark's own Kotlin package (`ZenMode.kt`,
+  `ui/SurfarkMenuGroup.kt`).
+- `app/src/main/res/values/surfark_strings.xml` and two `surfark_ic_zen_mode*` icons are new.
+- Hooks: one line in Fenix's `MainMenu.kt` (draws our menu group after Sideraven's) and one extra
+  step in `sideraven-ci.yml` (runs `app.surfark.*` unit tests).
+- Tests: `app/src/testSideraven/java/app/surfark/browser/ZenModeTest.kt` (7 cases).
+
+Not verified: it compiles and its logic is tested in CI, but nobody has seen it on a device.
+To check on the Fold: the entry appears in the three-dot menu on both screens; the page really
+fills the screen; the Sidebar can still be pulled in from the edge; "Leave Zen mode" restores the
+layout; folding and unfolding while in Zen mode behaves.
+
 ### 2026-11-12: Surfark Companion 0.1.0, the shared extension (branch `surfark/companion-extension`)
 
 New folder `surfark-extension/`: the WebExtension both browsers will share. Version 0.1.0 saves a
