@@ -23,6 +23,22 @@ Context for whoever reads this next (person or AI):
 
 ## Change log
 
+### 2026-11-12: release pipeline and upstream-merge routine (branch `surfark/release-pipeline`)
+
+- `.github/workflows/sideraven-release.yml` now publishes Surfark Browser: files are named
+  `surfark-browser-<version>-<abi>.apk`, the release title and notes say Surfark Browser and name
+  the Sideraven version it is built on (`automation/surfark/sideraven-base.txt`), release notes
+  come from `docs/surfark/changelog/<version>.md`, and the release is created in this repository
+  even though it is a fork. Secret names are unchanged.
+- `docs/surfark/signing.md`: how the signing key is created, backed up and given to GitHub, and
+  how a release is published and installed. No key exists yet, so nothing has been released.
+- `automation/surfark/merge-upstream.sh`: starts a merge of the newest Sideraven on its own
+  branch, without upstream's tags.
+- Versions are Surfark's own, starting at 0.1.0.
+
+Not verified: the release workflow has not run in this fork, because it needs the signing
+secrets. Expect to fix small things on the first real release.
+
 ### 2026-11-11: renamed to Surfark Browser (branch `surfark/rename`)
 
 Based on Sideraven 1.2.0 (commit 360d05c), unchanged apart from the following.
@@ -51,9 +67,8 @@ a debug build still says "Firefox" and "Sideraven" in places. That is expected.
 
 Not changed yet, on purpose:
 - The app icon and the icon picker still show Sideraven's artwork.
-- The release workflow (`sideraven-release.yml`) still names files and release titles "Sideraven"
-  and expects signing secrets named `SIDERAVEN_*`. No signing key exists yet, so no release can
-  be published yet.
+- (Done on 2026-11-12, see above: the release workflow now names files and titles Surfark Browser.
+  It still expects signing secrets named `SIDERAVEN_*`, and no signing key exists yet.)
 - Kotlin package names (`pt.dweep.sideraven`) stay as they are; renaming them would make every
   upstream merge conflict.
 - The README below our notice is still Sideraven's.
