@@ -5,7 +5,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Name of the application -->
     <!-- SIDERAVEN-HOOK: app name (debug/dev builds) -->
-    <string name="app_name" translatable="false">Sideraven Dev</string>
+    <!-- SURFARK-HOOK: app name (debug/dev builds) -->
+    <string name="app_name" translatable="false">Surfark Dev</string>
     <string name="firefox" translatable="false">Iceraven</string>
 
     <!-- Preference for developers -->
