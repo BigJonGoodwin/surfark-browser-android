@@ -1,0 +1,42 @@
+# Surfark Companion (surfark-extension/): unit tests, Mozilla's extension lint, and a packaged zip.
+#
+# Context: the extension is plain JavaScript with no dependencies, so this takes about a minute.
+# It is separate from Sideraven CI (the 30-minute Android build), which knows nothing about the
+# extension folder. The zip is an unsigned build for trying out; it is kept for 14 days.
+name: Surfark Companion
+
+on:
+  push:
+    branches: [main]
+    paths: ["surfark-extension/**", ".github/workflows/surfark-extension.yml"]
+  pull_request:
+    paths: ["surfark-extension/**", ".github/workflows/surfark-extension.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test, lint and package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: surfark-extension
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Unit tests
+        run: npm test
+      - name: Lint (web-ext)
+        run: npm run lint
+      - name: Package
+        run: npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: surfark-companion
+          path: surfark-extension/dist/*.zip
+          retention-days: 14

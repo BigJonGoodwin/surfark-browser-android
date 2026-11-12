@@ -47,7 +47,8 @@ android {
         }
 
         // SIDERAVEN-HOOK: Sideraven application ID (app.sideraven + suffix below: .browser, .browser.debug)
-        applicationId "app.sideraven"
+        // SURFARK-HOOK: Surfark Browser's ID is app.surfark + the same suffixes (app.surfark.browser, .browser.debug)
+        applicationId "app.surfark"
         minSdk config.minSdkVersion
         targetSdk config.targetSdkVersion
         versionCode 1
@@ -166,10 +167,10 @@ android {
             // Need to replicate default debug config features
             signingConfig signingConfigs.debug
             debuggable true
-            def deepLinkSchemeValue = "sideraven-debug"
+            def deepLinkSchemeValue = "surfark-debug" // SURFARK-HOOK
             buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
             manifestPlaceholders.putAll([
-                    "sharedUserId": "app.sideraven.browser.sharedID",
+                    "sharedUserId": "app.surfark.browser.sharedID" /* SURFARK-HOOK */,
                     "deepLinkScheme": deepLinkSchemeValue,
             ])
             // Use custom default allowed addon list
@@ -182,10 +183,10 @@ android {
             buildConfigField "boolean", "USE_RELEASE_VERSIONING", "true"
             // SIDERAVEN-HOOK: Sideraven release ID, scheme and sharedUserId
             applicationIdSuffix ".browser"
-            def deepLinkSchemeValue = "sideraven"
+            def deepLinkSchemeValue = "surfark" // SURFARK-HOOK
             buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
             manifestPlaceholders.putAll([
-                    "sharedUserId": "app.sideraven.browser.sharedID",
+                    "sharedUserId": "app.surfark.browser.sharedID" /* SURFARK-HOOK */,
                     "deepLinkScheme": deepLinkSchemeValue,
             ])
             // Use custom default allowed addon list

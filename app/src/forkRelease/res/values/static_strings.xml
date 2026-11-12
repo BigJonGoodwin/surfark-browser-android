@@ -5,5 +5,6 @@
 <resources>
     <!-- Name of the application -->
     <!-- SIDERAVEN-HOOK: app name -->
-    <string name="app_name" translatable="false">Sideraven</string>
+    <!-- SURFARK-HOOK: app name -->
+    <string name="app_name" translatable="false">Surfark Browser</string>
 </resources>
