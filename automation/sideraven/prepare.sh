@@ -33,6 +33,8 @@ fi
 if [ "${1:-}" = "--release" ]; then
   # Fenix's strings say Sideraven; Mozilla's service names and Sideraven's own strings stay.
   python3 automation/sideraven/brand-strings.py .
+  # SURFARK-HOOK: then Sideraven's name becomes Surfark (see automation/surfark/brand-strings.py)
+  python3 automation/surfark/brand-strings.py .
 fi
 
 touch .sideraven-prepared
