@@ -1,3 +1,11 @@
+<!-- SURFARK-HOOK: fork notice. Everything below it is Sideraven's README, kept so upstream merges stay clean. -->
+> [!NOTE]
+> **This is Surfark Browser for Android**, a personal fork of [Sideraven](https://github.com/Dweep4269/sideraven)
+> tuned for foldables and paired with [surfark-browser-desktop](https://github.com/BigJonGoodwin/surfark-browser-desktop).
+> It is not Sideraven and is not supported by Sideraven's developers: please do not report its problems to them.
+> What this fork changes is listed in [docs/surfark/README.md](docs/surfark/README.md). The rest of this page is
+> Sideraven's own README, and its download links lead to Sideraven, not to this fork.
+
 <div align="center">
 
 <img src="docs/readme/logo.png" alt="Sideraven logo" width="160">

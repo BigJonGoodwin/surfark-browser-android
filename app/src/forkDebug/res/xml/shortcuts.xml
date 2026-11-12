@@ -3,6 +3,7 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
+<!-- SURFARK-HOOK: targetPackage below is Surfark Browser's app ID (must match app/build.gradle) -->
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- SIDERAVEN-HOOK: targetPackage must match the Sideraven application ID -->
     <shortcut
@@ -13,7 +14,7 @@
         android:shortcutLongLabel="@string/home_screen_shortcut_open_new_tab_2">
         <intent
             android:action="org.mozilla.fenix.OPEN_TAB"
-            android:targetPackage="app.sideraven.browser.debug"
+            android:targetPackage="app.surfark.browser.debug"
             android:targetClass="org.mozilla.fenix.IntentReceiverActivity" />
     </shortcut>
     <shortcut
@@ -24,7 +25,7 @@
         android:shortcutLongLabel="@string/home_screen_shortcut_open_new_private_tab_2">
         <intent
             android:action="org.mozilla.fenix.OPEN_PRIVATE_TAB"
-            android:targetPackage="app.sideraven.browser.debug"
+            android:targetPackage="app.surfark.browser.debug"
             android:targetClass="org.mozilla.fenix.IntentReceiverActivity" />
     </shortcut>
 </shortcuts>

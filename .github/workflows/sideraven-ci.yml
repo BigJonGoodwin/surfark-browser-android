@@ -51,6 +51,10 @@ jobs:
       - name: Release strings say Sideraven
         run: ./automation/sideraven/test-brand-strings.sh
 
+      # SURFARK-HOOK: Surfark Browser's branding step, which runs after Sideraven's
+      - name: Release strings say Surfark
+        run: ./automation/surfark/test-brand-strings.sh
+
       - name: Install Android SDK with pieces Gradle skips
         run: ./automation/iceraven/install-sdk.sh
 
